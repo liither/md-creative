@@ -1,0 +1,371 @@
+/* ---------------------------------------------
+Table of contents
+------------------------------------------------
+01. Banner Styles (Home)
+02. About Styles
+03. Services Styles
+04. Portfolio Styles
+05. Promotion Styles
+06. Contact Styles
+--------------------------------------------- */
+
+/* 
+---------------------------------------------
+Banner Styles (Home)
+--------------------------------------------- 
+*/
+.main-banner .left-content .banner-sub-heading-sm h2 {
+    z-index: 2;
+    position: relative;
+    font-weight: 700;
+    font-size: 28px;
+    color: #fff !important;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+  
+.main-banner .left-content .banner-sub-heading-sm {
+    margin-bottom: 15px;
+}
+  
+  .main-banner .left-content .banner-sub-heading-sm h5 {
+    color: #fff !important;
+    font-weight: 200;
+    font-size: 12px;
+}
+
+.main-banner .left-content .main-banner-heading-sm {
+    width: 300px;
+    height: 35px !important;
+    background-color: #ffbe39 !important;
+    border-radius: 13px;
+    margin: auto;
+}
+
+.main-banner .left-content .main-banner-heading-sm h3 {
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 700;
+    color: #365486;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 8px;
+}
+
+/* 
+---------------------------------------------
+About Styles
+--------------------------------------------- 
+*/
+.about .about-heading-sm {
+    text-align: center;
+    margin: auto;
+}
+
+.about .about-heading-sm .line-dec {
+    text-align: center;
+    margin: auto;
+}
+
+.about-right-content .about-heading-sm .about-main-text-sm {
+    text-align: center;
+    margin: auto;
+    width: 180px;
+    height: 35px;
+    background-color: #ffbe39;
+    border-radius: 13px;
+}
+
+.about-right-content .about-heading-sm .about-main-text-sm h3 {
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 700;
+    color: #365486;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.about-right-content .about-heading-sm h4 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 20px;
+    color: #365486;
+}
+
+.about-right-content .about-heading-sm h5 {
+    color: #365486;
+    font-weight: 300;
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 45px;
+}
+
+.about-left-image-sm img {
+    padding-right: 50px;
+    margin-top: 10px
+  }
+
+/* Progress */
+.about-progress-sm .progress {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    background: none;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    box-shadow: none;
+    position: relative;
+}
+
+.about-progress-sm .progress .progress-value {
+    text-align: center;
+    font-style: italic;
+    color: #365486;
+    display: flex;
+    width: 100%;
+    border-radius: 50%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 25px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-weight: 700;
+}
+
+.about-progress-sm .skill-item span {
+    font-size: 14px;
+    text-transform: none;
+    color: #365486;
+    font-weight: 300;
+}
+
+/* 
+---------------------------------------------
+Services Styles
+--------------------------------------------- 
+*/
+.services .section-heading .services-heading-sm h4 {
+    color: #fff;
+    font-size: 24px;
+}
+
+.services .section-heading .services-heading-sm h6 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.services .section-heading .services-heading-sm .line-dec {
+    margin: 0 auto;
+}
+
+.services .naccs .menu-small {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 0%;
+    padding-top: 0%;
+}
+
+.services .naccs .menu-small .service-small {
+    color: #fff;
+    margin: 15px;
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.services .naccs .menu-small .service-small .thumb-small {
+    display: inline-block;
+    width: 45%;
+    padding: 15px 15px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+}
+
+.services .naccs .menu-small .service-small h4 {
+    margin-top: 6%;
+    color: #fff; /* ganti white fff*/
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+}
+
+/* 
+---------------------------------------------
+Portfolio Styles
+--------------------------------------------- 
+*/
+.our-portfolio .portfolio-left-content .portfolio-heading-sm {
+    width: 250px;
+    height: 35px;
+    background-color: #ffbe39;
+    border-radius: 13px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.our-portfolio .portfolio-left-content .portfolio-heading-sm h3 {
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 700;
+    color: #365486;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 8px;
+}
+
+/* Table Style */
+.our-portfolio .portfolio-left-content .portfolio-table-content-sm {
+    /* color: #365486;
+    border: 3px solid black;
+    border-collapse: collapse; */
+    font-size: 10px !important;
+    font-weight: 400;
+    margin: 10px;
+    overflow-x: auto;
+}
+
+.our-portfolio .portfolio-left-content .portfolio-table-content-sm th, .our-portfolio .portfolio-left-content .portfolio-table-content-sm td {
+    border: 1px solid black;
+    padding: 3px 5px;
+    text-align: center;
+    vertical-align: middle;
+    /* width: 200px; */
+}
+
+.our-portfolio .portfolio-left-content .portfolio-table-content-sm tr {
+    width: 50px !important;
+}
+
+.portfolio-left-content .portfolio-table-content-sm .table-blue {
+    background-color: #365486;
+    color: #fff;
+    font-size: 10px !important;
+    font-weight: 400;
+}
+
+.portfolio-left-content .portfolio-table-content-sm .table-white {
+    background-color: #fff;
+    color: #365486;
+    font-size: 10px !important;
+    font-weight: 400;
+}
+
+.portfolio-left-content .portfolio-table-content-sm .table-lightblue {
+    background-color: #EBF6FF;
+    color: #365486;
+    font-size: 10px !important;
+    font-weight: 400;
+}
+
+.portfolio-left-content .portfolio-table-content-sm .text-span-promo {
+    background: #E7E7DB;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.portfolio-table-content-sm .logo-portfolio img {
+    width: 50px;
+}
+/* End Table Style */
+
+.main-image-porto-sm img {
+    width: 95% !important;
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 
+---------------------------------------------
+Promotion Styles
+--------------------------------------------- 
+*/
+.promotion .section-heading .promotion-heading-sm h6 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.promotion .section-heading .promotion-heading-sm h4 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.promotion .section-promotion-lists-sm {
+    color: #fff;
+    text-align: left;
+    margin: 0px 20px;
+}
+
+.promotion .section-promotion-lists-sm h4 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.promotion .section-promotion-lists-sm .promotion-lists-sm {
+    font-size: 12px;
+    list-style: square;
+    margin-top: 8px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.section-promotion-specialprice-sm img {
+    width: 50% !important;
+}
+
+.promotion .main-image-promo-sm {
+    padding-top: 30px;
+}
+
+.promotion .main-image-promo-sm div img {
+    width: 65% !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 
+---------------------------------------------
+Contact Styles
+--------------------------------------------- 
+*/
+.contact-us .section-heading .contact-heading-sm h6 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #365486;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.contact-us .section-heading .contact-heading-sm h4 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #365486;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.contact-us .contact-full-address-sm p {
+    margin: 0px 10px;
+    color: #365486;
+    font-weight: 600;
+    font-size: 12px !important;
+}
