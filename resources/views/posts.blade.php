@@ -19,12 +19,12 @@
 											<a href="/posts/{{ $post->slug }}" class="img" style="background-image: url({{ asset('images/blog/image_1.jpg') }});"></a>
 											<div class="text pt-4">
 												<h3 class="mb-4"><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h3>
-												<p class="mb-4">{{ Str::limit($post->article_text, 200) }}</p>
+												<div class="mb-4">{{ strip_tags(Str::limit($post->article_text, 200)) }}</div>
 												<div class="author mb-4 d-flex align-items-center">
 													<a href="/posts/{{ $post->slug }}" class="img" style="background-image: url({{ asset('images/blog/person_1.jpg') }});"></a>
 													<div class="ml-3 info">
 														<span>Written by</span>
-														<h3><b>{{ $post->author }}</b>, <span>{{ $post->created_at->diffForHumans() }}</span></h3>
+														<h3><b>{{ $post->author->name }}</b>, <span>{{ $post->created_at->diffForHumans() }}</span></h3>
 													</div>
 												</div>
 

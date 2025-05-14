@@ -15,13 +15,13 @@ class CategorySeeder extends Seeder
     {
         Category::create(
             [
-                'category' => 'test 1',
+                'category_name' => 'test 1',
             ]
         );
 
         Category::create(
             [
-                'category' => 'test 2',
+                'category_name' => 'test 2',
             ]
         );
     }

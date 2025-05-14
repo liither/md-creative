@@ -17,7 +17,7 @@
                                         <img src="{{ asset('images/blog/image_1.jpg') }}" alt="" class="img-single-blog-fluid">
                                     </div>
 
-                                    <p>{{ $post->article_text }}</p>
+                                    <div>{{ strip_tags($post->article_text) }}</div>
                                     
                                     <p></p>
                                     

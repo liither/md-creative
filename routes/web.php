@@ -74,7 +74,7 @@ Route::post('/logout', [LoginController::class, 'logout'])
             ]);
         
         // Admin Categories Routes
-        Route::middleware('admin')->group(function () {
+        Route::middleware('auth')->group(function () {
             Route::resource('/dashboard/categories', AdminCategoryController::class)
                 ->except('show')
                 ->names([

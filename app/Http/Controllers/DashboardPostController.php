@@ -27,6 +27,7 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
+
         return view('dashboard.posts.create', [
             'categories' => Category::all()
         ]);
@@ -50,10 +51,16 @@ class DashboardPostController extends Controller
         }
         
         $validatedData['author_id'] = auth()->id();
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
-        Post::create($validatedData);
-
+        $post = new Post();
+        $post->title = $request->title;
+        $post->category_id = $request->category_id;
+        $post->author_id = auth()->id();
+        $post->slug = $request->slug;
+        $post->article_text = $request->body;
+        $post->image = $validatedData['image'] ?? null;
+        $post->save();
+        
         return to_route('dashboard.posts.index')
             ->with('success', 'New post has been added!');
     }
@@ -103,7 +110,7 @@ class DashboardPostController extends Controller
         }
 
         $validatedData['author_id'] = auth()->id();
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        $validatedData['article_text'] = $request->body;
 
         $post->update($validatedData);
 

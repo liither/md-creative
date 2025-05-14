@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category'];
+    protected $guarded = ['id'];
 
     public function posts()
     {

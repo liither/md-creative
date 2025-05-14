@@ -12,14 +12,14 @@
     
             <a href="/" class="logo-sm d-block d-sm-block d-md-none">
               <img src="{{ asset('images/Logo-MDC-01.png') }}" alt="Manifest Digital Creative Logo">
-            </a>
-
+            </a>            
 
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li><x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link></li>
               <li><x-nav-link href="/posts" :active="request()->is('/posts')">Blog</x-nav-link></li>
+              <li><x-nav-link href="/login">Login</x-nav-link></li>
 
               <li><div class="border-first-button"><a href="https://wa.me/+62882008206140?text=Saya%20Mau%20Promo%20Analisa%20Bisnis%20Saya">Check Out</a></div></li> 
             </ul>        
