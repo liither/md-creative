@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminCategoryController;
@@ -17,25 +18,9 @@ Route::get('/blog', function () {
 });
 
 // Blog Routes
-Route::get('/posts', function () {
-    return view('posts', [
-        'title' => 'Test Blog | Manifest Digital Kreatif', 
-        'posts' => Post::all()
-    ]);
-});
-
-Route::get('/posts/{post:slug}', function (Post $post) {
-    return view('post', [
-        'title' => 'Single Post', 
-        'post' => $post
-    ]);
-});
-
-Route::get('/singleblog', function () {
-    return view('single-blog', [
-        'title' => 'Test Blog | Manifest Digital Kreatif'
-    ]);
-});
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+Route::get('/search', [PostController::class, 'search'])->name('posts.search');
 
 // Authentication Routes
 Route::middleware('guest')->group(function () {
@@ -61,6 +46,7 @@ Route::post('/logout', [LoginController::class, 'logout'])
             Route::get('/checkSlug', [DashboardPostController::class, 'checkSlug'])
                 ->name('dashboard.posts.checkSlug');
         });
+        
         
         Route::resource('/dashboard/posts', DashboardPostController::class)
             ->names([

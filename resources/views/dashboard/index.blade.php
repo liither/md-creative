@@ -1,7 +1,8 @@
-@extends('dashboard.layouts.main')
+<!-- resources/views/dashboard/welcome.blade.php -->
+<x-layout-main>
+    <x-slot:title>Welcome Back</x-slot:title>
 
-@section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Welcome back, {{ auth()->user()->name }}</h1>
-</div>
-@endsection
+    <div class="d-flex align-items-center border-bottom mb-3" style="padding-top: 0.5rem;">
+        <h1 class="h4 mb-0">Welcome back, {{ auth()->user()->name }}</h1>
+    </div>
+</x-layout-main>

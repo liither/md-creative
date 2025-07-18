@@ -1,13 +1,15 @@
-<div class="col-xl-3 sidebar blog-sidebar-style ftco-animate bg-light pt-5 ">
+<div class="col-xl-3 sidebar blog-sidebar-style ftco-animate bg-light pt-5">
+    <!-- Search Form Section -->
     <div class="sidebar-box pt-md-4">
-        <form action="#" class="search-form">
+        <form action="{{ route('posts.search') }}" method="GET" class="search-form">
             <div class="form-group">
                 <span class="icon icon-search"></span>
-                <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                <input type="text" name="query" class="form-control" placeholder="Type a keyword and hit enter" value="{{ request()->query('query') }}" required>
             </div>
         </form>
     </div>
 
+    <!-- Popular Articles Section -->
     <div class="sidebar-box ftco-animate">
         <h3 class="sidebar-heading">Popular Articles</h3>
         <div class="popular-article mb-4 d-flex">
@@ -47,18 +49,20 @@
         </div>
     </div>
 
+    <!-- Newsletter Section -->
     <div class="sidebar-box subs-wrap img py-4" style="background-image: url({{ asset('images/blog/bg_1.jpg') }});">
         <div class="overlay"></div>
         <h3 class="mb-4 sidebar-heading">Newsletter</h3>
         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia</p>
         <form action="#" class="subscribe-form">
             <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email Address">
-            <input type="submit" value="Subscribe" class="mt-2 btn btn-white submit">
+                <input type="text" class="form-control" placeholder="Email Address">
+                <input type="submit" value="Subscribe" class="mt-2 btn btn-white submit">
             </div>
         </form>
     </div>
 
+    <!-- Archives Section -->
     <div class="sidebar-box ftco-animate">
         <h3 class="sidebar-heading">Archives</h3>
         <ul class="categories">
@@ -71,17 +75,17 @@
         </ul>
     </div>
 
-
+    <!-- Paragraph Section -->
     <div class="sidebar-box ftco-animate">
         <h3 class="sidebar-heading">Paragraph</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut.</p>
     </div>
 
-
+    <!-- Copyright Section -->
     <div class="sidebar-box ftco-animate">
         <h3 class="sidebar-heading">Copyright</h3>
-        <p class="pfooter"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        <p class="pfooter">
             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        </p>
     </div>
 </div>

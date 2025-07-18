@@ -16,12 +16,14 @@ class CategorySeeder extends Seeder
         Category::create(
             [
                 'category_name' => 'test 1',
+                'slug' => 'test-1',
             ]
         );
 
         Category::create(
             [
                 'category_name' => 'test 2',
+                'slug' => 'test-2',
             ]
         );
     }

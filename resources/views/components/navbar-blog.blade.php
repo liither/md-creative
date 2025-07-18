@@ -21,7 +21,7 @@
               <li><x-nav-link href="/posts" :active="request()->is('/posts')">Blog</x-nav-link></li>
               <li><x-nav-link href="/login">Login</x-nav-link></li>
 
-              <li><div class="border-first-button"><a href="https://wa.me/+62882008206140?text=Saya%20Mau%20Promo%20Analisa%20Bisnis%20Saya">Check Out</a></div></li> 
+              <li><div class="border-first-button"><a href="https://wa.me/+62882008206140?text=Saya%20Mau%20Promo%20Analisa%20Bisnis%20Saya">Contact</a></div></li> 
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>

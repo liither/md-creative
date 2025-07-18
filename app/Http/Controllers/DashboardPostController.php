@@ -4,69 +4,77 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the posts for the authenticated user, with optional category filtering.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('dashboard.posts.index', [
-            'posts' => Post::where('author_id', auth()->id())->get()
-        ]);
+        $categories = Category::all();
+
+        $query = Post::with('category')
+            ->where('author_id', auth()->id());
+
+        if ($request->filled('category')) {
+            $category = Category::where('slug', $request->category)->first();
+
+            if ($category) {
+                $query->where('category_id', $category->id);
+            } else {
+                // Jika slug kategori tidak valid, kosongkan hasil
+                $query->whereRaw('0 = 1');
+            }
+        }
+
+        $posts = $query->get();
+
+        return view('dashboard.posts.index', compact('posts', 'categories'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new post.
      */
     public function create()
     {
-
         return view('dashboard.posts.create', [
             'categories' => Category::all()
         ]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created post in storage.
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validated = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:posts',
-            'category_id' => 'required',
-            'image' => 'image|file|max:1024',
+            'slug' => 'required|unique:posts,slug',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|file|max:1024',
             'body' => 'required'
         ]);
 
+        // Handle image upload and store the image in 'post-images' folder on public disk
         if ($request->hasFile('image')) {
-            $validatedData['image'] = $request->file('image')->store('post-images');
+            $validated['image'] = $request->file('image')->store('post-images', 'public');
         }
-        
-        $validatedData['author_id'] = auth()->id();
 
-        $post = new Post();
-        $post->title = $request->title;
-        $post->category_id = $request->category_id;
-        $post->author_id = auth()->id();
-        $post->slug = $request->slug;
-        $post->article_text = $request->body;
-        $post->image = $validatedData['image'] ?? null;
-        $post->save();
-        
-        return to_route('dashboard.posts.index')
+        $validated['author_id'] = auth()->id();
+        $validated['article_text'] = $validated['body'];
+
+        Post::create($validated);
+
+        return redirect()->route('dashboard.posts.index')
             ->with('success', 'New post has been added!');
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified post.
      */
     public function show(Post $post)
     {
@@ -74,7 +82,7 @@ class DashboardPostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified post.
      */
     public function edit(Post $post)
     {
@@ -85,60 +93,65 @@ class DashboardPostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified post in storage.
      */
     public function update(Request $request, Post $post)
     {
         $rules = [
             'title' => 'required|max:255',
-            'category_id' => 'required',
-            'image' => 'image|file|max:1024',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|file|max:1024',
             'body' => 'required'
         ];
 
-        if ($request->slug != $post->slug) {
-            $rules['slug'] = 'required|unique:posts';
+        // Validate slug only if it's different
+        if ($request->slug !== $post->slug) {
+            $rules['slug'] = 'required|unique:posts,slug';
         }
 
-        $validatedData = $request->validate($rules);
+        $validated = $request->validate($rules);
 
-        if ($request->hasFile('image')) { 
+        // Handle image upload if a new image is provided
+        if ($request->hasFile('image')) {
             if ($post->image) {
+                // Delete old image if it exists
                 Storage::delete($post->image);
             }
-            $validatedData['image'] = $request->file('image')->store('post-images');
+            // Store new image in 'post-images' folder on public disk
+            $validated['image'] = $request->file('image')->store('post-images', 'public');
         }
 
-        $validatedData['author_id'] = auth()->id();
-        $validatedData['article_text'] = $request->body;
+        $validated['author_id'] = auth()->id();
+        $validated['article_text'] = $validated['body'];
 
-        $post->update($validatedData);
+        $post->update($validated);
 
-        return to_route('dashboard.posts.index')
+        return redirect()->route('dashboard.posts.index')
             ->with('success', 'Post has been updated!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified post from storage.
      */
     public function destroy(Post $post)
     {
+        // Delete image from storage if exists
         if ($post->image) {
             Storage::delete($post->image);
         }
-        
+
         $post->delete();
 
-        return to_route('dashboard.posts.index')
+        return redirect()->route('dashboard.posts.index')
             ->with('success', 'Post has been deleted!');
     }
 
     /**
-     * Generate a slug for the given title.
+     * Generate a unique slug from a title via AJAX.
      */
     public function checkSlug(Request $request)
     {
-        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+        $slug = SlugService::createSlug(Post::class, 'slug', $request->title ?? '');
         return response()->json(['slug' => $slug]);
     }
 }

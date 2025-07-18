@@ -11,15 +11,17 @@
 						<div class="col-xl-9 blog-articles-style px-md-5 py-5">
 							<div class="row pt-md-5">
 								
-								<!-- Per page 8 article -->
+								<!-- Per page 8 articles -->
 
 								@foreach ($posts as $post)
 									<div class="col-md-12">
 										<div class="blog-entry-2 ftco-animate">
-											<a href="/posts/{{ $post->slug }}" class="img" style="background-image: url({{ asset('images/blog/image_1.jpg') }});"></a>
+											<a href="/posts/{{ $post->slug }}" class="img" 
+												style="background-image: url({{ $post->image ? asset('storage/' . $post->image) : asset('images/blog/default_image.jpg') }});">
+											</a>
 											<div class="text pt-4">
 												<h3 class="mb-4"><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h3>
-												<div class="mb-4">{{ strip_tags(Str::limit($post->article_text, 200)) }}</div>
+												<div class="mb-4">{{ Str::limit(strip_tags(html_entity_decode($post->article_text)), 200) }}</div>
 												<div class="author mb-4 d-flex align-items-center">
 													<a href="/posts/{{ $post->slug }}" class="img" style="background-image: url({{ asset('images/blog/person_1.jpg') }});"></a>
 													<div class="ml-3 info">
